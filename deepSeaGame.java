@@ -4,7 +4,8 @@ import javax.swing.*;
 import javax.swing.JFrame.*;
 public class deepSeaGame implements ActionListener, MouseListener{
     JFrame frame;
-	JTextField textfield;
+	JTextField aircnt;
+    JTextField curPlayer;
 	JButton dive;
 	JButton returnToSub;
     JButton pickUp;
@@ -16,6 +17,7 @@ public class deepSeaGame implements ActionListener, MouseListener{
     JButton player4;
     JButton [] buttons;
 	JPanel panel;
+    JPanel panelText;
     Font myFont = new Font("SansSerif",Font.BOLD,30);
     private int xPos;
     private int yPos;
@@ -31,11 +33,17 @@ public class deepSeaGame implements ActionListener, MouseListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1500,1000);
         frame.setVisible(true);
+        frame.setResizable(false);
 
-        textfield = new JTextField();
-        textfield.setBounds(5,5,300,50);
-        textfield.setFont(myFont);
-        textfield.setText("Submarine has 25 air left");
+        aircnt = new JTextField();
+        aircnt.setBounds(5,5,300,50);
+        aircnt.setFont(myFont);
+        aircnt.setText("Submarine has 25 air left");
+
+        curPlayer = new JTextField();
+        curPlayer.setBounds(5,5,300,50);
+        curPlayer.setFont(myFont);
+        curPlayer.setText("Submarine has 25 air left");
 
         dive = new JButton("Dive");
         returnToSub = new JButton("Return to Sub");
@@ -70,11 +78,18 @@ public class deepSeaGame implements ActionListener, MouseListener{
         panel.setBounds(50,100,10,10);
         panel.setLayout(new GridLayout(3,3,10,10));
 
+        panelText = new JPanel();
+        panelText.setBounds(50,100,10,10);
+        panelText.setLayout(new GridLayout(1,2,10,10));
+
+        panelText.add(curPlayer);
+        panelText.add(aircnt);
+
         for (int i = 0; i<buttons.length;i++){
             panel.add(buttons[i]);
         }
 
-        frame.add(textfield,BorderLayout.NORTH);
+        frame.add(panelText,BorderLayout.NORTH);
         frame.add(panel,BorderLayout.SOUTH);
         frame.addMouseListener(this);
         frame.setVisible(true);
