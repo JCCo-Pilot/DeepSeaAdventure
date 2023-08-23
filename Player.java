@@ -2,9 +2,11 @@ import java.util.*;
 public class Player {
     private ArrayList<Treasure>stack;
     private int count;
+    private boolean isWet;
     public Player(){
         stack = new ArrayList<Treasure>();
         count = 0;
+        isWet = false;
     }
     public int getNumberOfTreasure(){
         return stack.size();
@@ -18,5 +20,8 @@ public class Player {
             result +=stack.get(i).getValue();
         }
         return result;
+    }
+    public boolean isWet(){
+        return isWet;
     }
 }

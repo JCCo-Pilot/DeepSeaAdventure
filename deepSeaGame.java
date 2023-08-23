@@ -1,11 +1,10 @@
 import java.awt.*;
+import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JFrame.*;
 public class deepSeaGame implements ActionListener, MouseListener{
     JFrame frame;
-
-    ArrayList<Treasure> ruins;
 	
     JTextField aircnt;
     JTextField curPlayer;
@@ -33,6 +32,7 @@ public class deepSeaGame implements ActionListener, MouseListener{
     
     Font myFont = new Font("SansSerif",Font.BOLD,30);
     
+    private ArrayList<Treasure> ruins;
     private int xPos;
     private int yPos;
     private int clickCount;
@@ -44,7 +44,37 @@ public class deepSeaGame implements ActionListener, MouseListener{
         airCount = 25;
         currentTurn = 1;
 
-        ruins = new ArrayList<Treasure>(32);
+        ruins = new ArrayList(24);
+
+        Treasure tier11 = new Treasure(1);
+        Treasure tier12 = new Treasure(1);
+        Treasure tier13 = new Treasure(1);
+        Treasure tier14 = new Treasure(1);
+        Treasure tier15 = new Treasure(1);
+        Treasure tier16 = new Treasure(1);
+        Treasure tier17 = new Treasure(1);
+        Treasure tier18 = new Treasure(1);
+        Treasure tier21 = new Treasure(2);
+        Treasure tier22 = new Treasure(2);
+        Treasure tier23 = new Treasure(2);
+        Treasure tier24 = new Treasure(2);
+        Treasure tier25 = new Treasure(2);
+        Treasure tier26 = new Treasure(2);
+        Treasure tier27 = new Treasure(2);
+        Treasure tier28 = new Treasure(2);
+        Treasure tier31 = new Treasure(3);
+        Treasure tier32 = new Treasure(2);
+        Treasure tier33 = new Treasure(2);
+        Treasure tier34 = new Treasure(2);
+        Treasure tier35 = new Treasure(3);
+        Treasure tier36 = new Treasure(3);
+        Treasure tier37 = new Treasure(3);
+        Treasure tier38 = new Treasure(3);
+
+        ruins.add(tier11);
+        ruins.add(tier12);
+        ruins.add(tier13);
+
 
         user1 = new Player();
         user2 = new Player();
@@ -63,7 +93,7 @@ public class deepSeaGame implements ActionListener, MouseListener{
         aircnt = new JTextField();
         aircnt.setBounds(5,5,300,50);
         aircnt.setFont(myFont);
-        aircnt.setText("Submarine has "+airCount+ "air left");
+        aircnt.setText("Submarine has "+airCount+ " air left");
 
         curPlayer = new JTextField();
         curPlayer.setBounds(5,5,300,50);
@@ -161,7 +191,7 @@ public class deepSeaGame implements ActionListener, MouseListener{
         }
         if (e.getSource()==pickUp){
             if (currentTurn ==1){
-                user1.addTreasure()
+                user1.addTreasure();
             }
         }
 
@@ -187,6 +217,9 @@ public class deepSeaGame implements ActionListener, MouseListener{
     }  
     public void mouseReleased(MouseEvent e) {  
         System.out.println("Mouse Released");  
+    }
+    public void draw(){
+        
     }
     
       
