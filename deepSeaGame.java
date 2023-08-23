@@ -4,9 +4,14 @@ import javax.swing.*;
 import javax.swing.JFrame.*;
 public class deepSeaGame implements ActionListener, MouseListener{
     JFrame frame;
-	JTextField aircnt;
+
+    ArrayList<Treasure> ruins;
+	
+    JTextField aircnt;
     JTextField curPlayer;
-	JButton dive;
+    JTextField instruct;
+	
+    JButton dive;
 	JButton returnToSub;
     JButton pickUp;
     JButton drop;
@@ -15,16 +20,36 @@ public class deepSeaGame implements ActionListener, MouseListener{
     JButton player2;
     JButton player3;
     JButton player4;
+
+    Player user1;
+    Player user2;
+    Player user3;
+    Player user4;
+
     JButton [] buttons;
-	JPanel panel;
+	
+    JPanel panel;
     JPanel panelText;
+    
     Font myFont = new Font("SansSerif",Font.BOLD,30);
+    
     private int xPos;
     private int yPos;
     private int clickCount;
+    private int airCount;
+    private int currentTurn;
     public deepSeaGame(){
         xPos = 0;
         yPos = 0;
+        airCount = 25;
+        currentTurn = 1;
+
+        ruins = new ArrayList<Treasure>(32);
+
+        user1 = new Player();
+        user2 = new Player();
+        user3 = new Player();
+        user4 = new Player();
 
 
         buttons = new JButton[9];
@@ -38,12 +63,17 @@ public class deepSeaGame implements ActionListener, MouseListener{
         aircnt = new JTextField();
         aircnt.setBounds(5,5,300,50);
         aircnt.setFont(myFont);
-        aircnt.setText("Submarine has 25 air left");
+        aircnt.setText("Submarine has "+airCount+ "air left");
 
         curPlayer = new JTextField();
         curPlayer.setBounds(5,5,300,50);
         curPlayer.setFont(myFont);
-        curPlayer.setText("Submarine has 25 air left");
+        curPlayer.setText("It is Player 1's turn");
+
+        instruct = new JTextField();
+        instruct.setBounds(5,5,300,50);
+        instruct.setFont(myFont);
+        instruct.setText("Dive Time");
 
         dive = new JButton("Dive");
         returnToSub = new JButton("Return to Sub");
@@ -80,10 +110,11 @@ public class deepSeaGame implements ActionListener, MouseListener{
 
         panelText = new JPanel();
         panelText.setBounds(50,100,10,10);
-        panelText.setLayout(new GridLayout(1,2,10,10));
+        panelText.setLayout(new GridLayout(1,3,10,10));
 
         panelText.add(curPlayer);
         panelText.add(aircnt);
+        panelText.add(instruct);
 
         for (int i = 0; i<buttons.length;i++){
             panel.add(buttons[i]);
@@ -96,6 +127,44 @@ public class deepSeaGame implements ActionListener, MouseListener{
     }
     public void actionPerformed(ActionEvent e) {
         
+        if (e.getSource()==player1){
+            curPlayer.setText("Player 1's Turn");
+            airCount= airCount-1-user1.getNumberOfTreasure();
+            aircnt.setText("There is "+airCount+" air left");
+            if (airCount<=0){
+                aircnt.setText("Everyone died round over");
+            }
+        }
+        if (e.getSource()==player2){
+            curPlayer.setText("Player 2's Turn");
+            airCount= airCount-1-user2.getNumberOfTreasure();
+            aircnt.setText("There is "+airCount+" air left");
+            if (airCount<=0){
+                aircnt.setText("Everyone died round over");
+            }
+        }
+        if (e.getSource()==player3){
+            curPlayer.setText("Player 3's Turn");
+            airCount= airCount-1-user3.getNumberOfTreasure();
+            aircnt.setText("There is "+airCount+" air left");
+            if (airCount<=0){
+                aircnt.setText("Everyone died round over");
+            }
+        }
+        if (e.getSource()==player4){
+            curPlayer.setText("Player 4's Turn");
+            airCount= airCount-1-user4.getNumberOfTreasure();
+            aircnt.setText("There is "+airCount+" air left");
+            if (airCount<=0){
+                aircnt.setText("Everyone died round over");
+            }
+        }
+        if (e.getSource()==pickUp){
+            if (currentTurn ==1){
+                user1.addTreasure()
+            }
+        }
+
     }
     public void constantPos(MouseEvent e){
         xPos = e.getX();
