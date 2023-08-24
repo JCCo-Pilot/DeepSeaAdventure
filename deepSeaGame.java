@@ -3,6 +3,7 @@ import java.util.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JFrame.*;
+import java.awt.Graphics;
 public class deepSeaGame implements ActionListener, MouseListener{
     JFrame frame;
 	
@@ -29,6 +30,8 @@ public class deepSeaGame implements ActionListener, MouseListener{
 	
     JPanel panel;
     JPanel panelText;
+    submarineJPanel submarine;
+    //Ruins ruin;
     
     Font myFont = new Font("SansSerif",Font.BOLD,30);
     
@@ -74,6 +77,27 @@ public class deepSeaGame implements ActionListener, MouseListener{
         ruins.add(tier11);
         ruins.add(tier12);
         ruins.add(tier13);
+        ruins.add(tier14);
+        ruins.add(tier15);
+        ruins.add(tier16);
+        ruins.add(tier17);
+        ruins.add(tier18);
+        ruins.add(tier21);
+        ruins.add(tier22);
+        ruins.add(tier23);
+        ruins.add(tier24);
+        ruins.add(tier25);
+        ruins.add(tier26);
+        ruins.add(tier27);
+        ruins.add(tier28);
+        ruins.add(tier31);
+        ruins.add(tier32);
+        ruins.add(tier33);
+        ruins.add(tier34);
+        ruins.add(tier35);
+        ruins.add(tier36);
+        ruins.add(tier37);
+        ruins.add(tier38);
 
 
         user1 = new Player();
@@ -94,16 +118,19 @@ public class deepSeaGame implements ActionListener, MouseListener{
         aircnt.setBounds(5,5,300,50);
         aircnt.setFont(myFont);
         aircnt.setText("Submarine has "+airCount+ " air left");
+        //aircnt.setEditable(false);
 
         curPlayer = new JTextField();
         curPlayer.setBounds(5,5,300,50);
         curPlayer.setFont(myFont);
         curPlayer.setText("It is Player 1's turn");
+        //curPlayer.setEditable(false);
 
         instruct = new JTextField();
         instruct.setBounds(5,5,300,50);
         instruct.setFont(myFont);
         instruct.setText("Dive Time");
+        //instruct.setEditable(false);
 
         dive = new JButton("Dive");
         returnToSub = new JButton("Return to Sub");
@@ -146,20 +173,29 @@ public class deepSeaGame implements ActionListener, MouseListener{
         panelText.add(aircnt);
         panelText.add(instruct);
 
+        submarine = new submarineJPanel(ruins);
+
+        //ruin = new Ruins(ruins);
+
         for (int i = 0; i<buttons.length;i++){
             panel.add(buttons[i]);
         }
 
         frame.add(panelText,BorderLayout.NORTH);
         frame.add(panel,BorderLayout.SOUTH);
+        frame.add(submarine);
+
         frame.addMouseListener(this);
         frame.setVisible(true);
+
+        
     }
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource()==player1){
             curPlayer.setText("Player 1's Turn");
-            airCount= airCount-1-user1.getNumberOfTreasure();
+            airCount--;
+            //airCount= airCount-1-user1.getNumberOfTreasure();
             aircnt.setText("There is "+airCount+" air left");
             if (airCount<=0){
                 aircnt.setText("Everyone died round over");
@@ -189,12 +225,14 @@ public class deepSeaGame implements ActionListener, MouseListener{
                 aircnt.setText("Everyone died round over");
             }
         }
-        if (e.getSource()==pickUp){
+        /*if (e.getSource()==pickUp){
             if (currentTurn ==1){
                 user1.addTreasure();
             }
-        }
-
+        }*/
+        submarine.repaint();
+        panelText.repaint();
+        panel.repaint();
     }
     public void constantPos(MouseEvent e){
         xPos = e.getX();
