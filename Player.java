@@ -2,6 +2,7 @@ import java.util.*;
 public class Player {
     private ArrayList<Treasure>stack;
     private int count;
+    private boolean turn;
     private boolean isWet;
     public Player(){
         stack = new ArrayList<Treasure>();
@@ -23,5 +24,11 @@ public class Player {
     }
     public boolean isWet(){
         return isWet;
+    }
+    public boolean isTurn(){
+        return turn;
+    }
+    public void setTurn(boolean i){
+        turn = i;
     }
 }
