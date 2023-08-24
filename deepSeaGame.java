@@ -259,6 +259,27 @@ public class deepSeaGame implements ActionListener, MouseListener{
     public void draw(){
         
     }
+    public int diceRoll(){
+        int dice = (int)(Math.random()*5)+2;
+        return dice;
+    }
+    public int move(){
+        int move = diceRoll();
+        if (user1.isTurn()){
+            move = move-user1.getNumberOfTreasure();
+        }
+        if (user2.isTurn()){
+            move = move-user2.getNumberOfTreasure();
+        }
+        if (user3.isTurn()){
+            move = move-user3.getNumberOfTreasure();
+        }
+        if (user4.isTurn()){
+            move = move-user4.getNumberOfTreasure();
+        }
+        submarine.repaint();
+        return move;
+    }
     
       
 }
