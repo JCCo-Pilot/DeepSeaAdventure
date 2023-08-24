@@ -15,7 +15,7 @@ public class Treasure {
         yPos = 0;
         tier = 0;
         value= 0;
-        blank = true;
+        blank = false;
     }
     public Treasure(int i){
         tier = i;
@@ -34,8 +34,11 @@ public class Treasure {
         xPos = i;
         yPos = a;
     }
-    public boolean isNotBlank(){
+    public boolean isBlank(){
         return blank;
+    }
+    public void taken(){
+        blank = true;
     }  
     public int getValue(){
         return value;

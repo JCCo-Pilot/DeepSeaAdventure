@@ -36,8 +36,15 @@ public class submarineJPanel extends JPanel{
 		refresh();
 	}
 	public void refresh(){
-		if (result){
-			graph.drawRect(410,10,100,100);
+		int xVal = 410;
+		int yVal = 10;
+		int width = 100;
+		int height = 100;
+		for (int i = 0; i<ruins.size();i++){
+			if (ruins.get(i).isBlank()){
+				graph.drawRect(xVal,yVal,width,height);
+			}
+			xVal +=100;
 		}
 	}
 }
