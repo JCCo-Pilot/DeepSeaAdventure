@@ -41,13 +41,14 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
     private int clickCount;
     private int airCount;
     private int currentTurn;
+    private int roundnum;
     public deepSeaGame(){
         xPos = 0;
         yPos = 0;
         airCount = 25;
         currentTurn = 1;
 
-        ruins = new ArrayList(24);
+        ruins = new ArrayList(32);
 
         Treasure tier11 = new Treasure(1);
         Treasure tier12 = new Treasure(1);
@@ -66,13 +67,21 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         Treasure tier27 = new Treasure(2);
         Treasure tier28 = new Treasure(2);
         Treasure tier31 = new Treasure(3);
-        Treasure tier32 = new Treasure(2);
-        Treasure tier33 = new Treasure(2);
-        Treasure tier34 = new Treasure(2);
+        Treasure tier32 = new Treasure(3);
+        Treasure tier33 = new Treasure(3);
+        Treasure tier34 = new Treasure(3);
         Treasure tier35 = new Treasure(3);
         Treasure tier36 = new Treasure(3);
         Treasure tier37 = new Treasure(3);
         Treasure tier38 = new Treasure(3);
+        Treasure tier41 = new Treasure(3);
+        Treasure tier42 = new Treasure(3);
+        Treasure tier43 = new Treasure(3);
+        Treasure tier44 = new Treasure(3);
+        Treasure tier45 = new Treasure(3);
+        Treasure tier46 = new Treasure(3);
+        Treasure tier47 = new Treasure(3);
+        Treasure tier48 = new Treasure(3);
 
         ruins.add(tier11);
         ruins.add(tier12);
@@ -98,6 +107,14 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         ruins.add(tier36);
         ruins.add(tier37);
         ruins.add(tier38);
+        ruins.add(tier41);
+        ruins.add(tier42);
+        ruins.add(tier43);
+        ruins.add(tier44);
+        ruins.add(tier45);
+        ruins.add(tier46);
+        ruins.add(tier47);
+        ruins.add(tier48);
 
 
         user1 = new Player();
@@ -194,6 +211,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
     public void actionPerformed(ActionEvent e) {
         
         if (e.getSource()==player1){
+            currentTurn = 1;
             curPlayer.setText("Player 1's Turn");
             airCount--;
             //airCount= airCount-1-user1.getNumberOfTreasure();
@@ -203,6 +221,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
             }
         }
         if (e.getSource()==player2){
+            currentTurn = 2;
             curPlayer.setText("Player 2's Turn");
             airCount= airCount-1-user2.getNumberOfTreasure();
             aircnt.setText("There is "+airCount+" air left");
@@ -211,6 +230,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
             }
         }
         if (e.getSource()==player3){
+            currentTurn = 3;
             curPlayer.setText("Player 3's Turn");
             airCount= airCount-1-user3.getNumberOfTreasure();
             aircnt.setText("There is "+airCount+" air left");
@@ -219,12 +239,28 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
             }
         }
         if (e.getSource()==player4){
+            currentTurn = 4 ;
             curPlayer.setText("Player 4's Turn");
             airCount= airCount-1-user4.getNumberOfTreasure();
             aircnt.setText("There is "+airCount+" air left");
             if (airCount<=0){
                 aircnt.setText("Everyone died round over");
             }
+        }
+        if (e.getSource()==dive){
+
+        }
+        if (e.getSource()==returnToSub){
+
+        }
+        if (e.getSource()==pickUp){
+
+        }
+        if (e.getSource()==drop){
+
+        }
+        if (e.getSource()==rollDice){
+
         }
         /*if (e.getSource()==pickUp){
             if (currentTurn ==1){
