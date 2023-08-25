@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JFrame.*;
 import java.awt.Graphics;
+import java.lang.*;
 public class fillTreasure {
     private int zeros,ones,twos,threes;
     private int fours, fives, sixes, sevens;
@@ -28,20 +29,85 @@ public class fillTreasure {
         fifteens = 2;
     }
     public ArrayList fill(ArrayList<Treasure> t){
-        ArrayList<Treasure> answer = fillTier1(t);
-        answer.add()
+        ArrayList<Treasure> answer = fillTier(t);
         return answer;
     }
-    public ArrayList fillTier1(ArrayList<Treasure> t){
-
-    }
-    public ArrayList fillTier2(){
-
-    }
-    public ArrayList fillTier3(){
-
-    }
-    public ArrayList fillTier4(){
-
+    public ArrayList fillTier(ArrayList<Treasure> t){
+        for (int i = 0; i<8; i++){
+            int seed = (int)(Math.random()*4)+0;
+            if(seed == 0&&zeros>0){
+                t.get(i).setValue(seed);
+                zeros--;
+            }
+            if(seed == 1&&ones>0){
+                t.get(i).setValue(seed);
+                ones--;
+            }
+            if(seed == 2&&twos>0){
+                t.get(i).setValue(seed);
+                twos--;
+            }
+            if(seed == 3&&threes>0){
+                t.get(i).setValue(seed);
+                threes--;
+            }
+        }
+        for (int i = 8; i<16; i++){
+            int seed = (int)(Math.random()*4)+4;
+            if(seed == 4&&fours>0){
+                t.get(i).setValue(seed);
+                fours--;
+            }
+            if(seed == 5&&fives>0){
+                t.get(i).setValue(seed);
+                fives--;
+            }
+            if(seed == 6&&sixes>0){
+                t.get(i).setValue(seed);
+                sixes--;
+            }
+            if(seed == 7&&sevens>0){
+                t.get(i).setValue(seed);
+                sevens--;
+            }
+        }
+        for (int i = 16; i<24; i++){
+            int seed = (int)(Math.random()*4)+8;
+            if(seed == 0&&zeros>0){
+                t.get(i).setValue(seed);
+                eights--;
+            }
+            if(seed == 1&&ones>0){
+                t.get(i).setValue(seed);
+                nines--;
+            }
+            if(seed == 2&&twos>0){
+                t.get(i).setValue(seed);
+                tens--;
+            }
+            if(seed == 3&&threes>0){
+                t.get(i).setValue(seed);
+                elevens--;
+            }
+        }
+        for (int i = 24; i<32; i++){
+            int seed = (int)(Math.random()*4)+12;
+            if(seed == 0&&zeros>0){
+                t.get(i).setValue(seed);
+                zeros--;
+            }
+            if(seed == 1&&ones>0){
+                t.get(i).setValue(seed);
+                ones--;
+            }
+            if(seed == 2&&twos>0){
+                t.get(i).setValue(seed);
+                twos--;
+            }
+            if(seed == 3&&threes>0){
+                t.get(i).setValue(seed);
+                threes--;
+            }
+        }
     }
 }

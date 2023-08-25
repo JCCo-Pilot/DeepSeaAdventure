@@ -24,6 +24,9 @@ public class Treasure {
         tier = i; 
         value = a;
     }
+    public void setValue(int i){
+        value = i;
+    }
     public void setX(int i){
         xPos = i;
     }
