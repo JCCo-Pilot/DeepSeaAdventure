@@ -32,19 +32,44 @@ public class submarineJPanel extends JPanel{
 	public void paint(Graphics g) {
 		super.paint(g);
 		graph = g;
-		graph.drawImage(image,0,10,400,100,null);
+		graph.drawImage(image,0,10,600,150,null);
 		refresh();
 	}
 	public void refresh(){
-		int xVal = 410;
+		int xVal = 630;
 		int yVal = 10;
-		int width = 100;
-		int height = 100;
+		int width = 150;
+		int height = 150;
+		// first row
 		for (int i = 0; i<ruins.size();i++){
-			if (ruins.get(i).isBlank()){
+			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==1){
 				graph.drawRect(xVal,yVal,width,height);
 			}
-			xVal +=100;
+			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==2){
+				graph.drawOval(xVal,yVal,width,height);
+			}
+			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==3){
+				graph.drawRect(xVal,yVal,width,height);
+			}
+			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==4){
+				graph.drawOval(xVal,yVal,width,height);
+			}
+			if (i == 6){
+				yVal += 180;
+				xVal = 75;
+			}
+			if (i==17){
+				yVal +=180;
+				xVal = 75;
+			}
+			if (i==28){
+				yVal +=180;
+				xVal = 75;
+			}
+			if (i!=6&&i!=17&&i!=28){
+				xVal +=160;
+			}
+			
 		}
 	}
 }

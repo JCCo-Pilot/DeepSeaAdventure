@@ -74,14 +74,14 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         Treasure tier36 = new Treasure(3);
         Treasure tier37 = new Treasure(3);
         Treasure tier38 = new Treasure(3);
-        Treasure tier41 = new Treasure(3);
-        Treasure tier42 = new Treasure(3);
-        Treasure tier43 = new Treasure(3);
-        Treasure tier44 = new Treasure(3);
-        Treasure tier45 = new Treasure(3);
-        Treasure tier46 = new Treasure(3);
-        Treasure tier47 = new Treasure(3);
-        Treasure tier48 = new Treasure(3);
+        Treasure tier41 = new Treasure(4);
+        Treasure tier42 = new Treasure(4);
+        Treasure tier43 = new Treasure(4);
+        Treasure tier44 = new Treasure(4);
+        Treasure tier45 = new Treasure(4);
+        Treasure tier46 = new Treasure(4);
+        Treasure tier47 = new Treasure(4);
+        Treasure tier48 = new Treasure(4);
 
         ruins.add(tier11);
         ruins.add(tier12);
@@ -127,7 +127,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
 
         frame = new JFrame("Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1500,1000);
+        frame.setSize(1900,1000);
         frame.setVisible(true);
         frame.setResizable(false);
 
@@ -326,6 +326,14 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         }
         submarine.repaint();
         return move;
+    }
+    public void testFill(){
+        fillTreasure filer = new fillTreasure();
+        ruins = filer.fill(ruins);
+        for (int i = 0; i<ruins.size();i++){
+            int val =ruins.get(i).getValue();
+            System.out.print(val+" ");
+        }
     }
     
       

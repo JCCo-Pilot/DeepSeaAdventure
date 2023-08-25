@@ -42,6 +42,9 @@ public class Treasure {
     }
     public void taken(){
         blank = true;
+    }
+    public int getTier(){
+        return tier;
     }  
     public int getValue(){
         return value;
