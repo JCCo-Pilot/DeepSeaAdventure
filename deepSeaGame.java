@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.JFrame.*;
 import java.awt.Graphics;
-public class deepSeaGame implements ActionListener, MouseListener{
+public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
     JFrame frame;
 	
     JTextField aircnt;
@@ -186,6 +186,7 @@ public class deepSeaGame implements ActionListener, MouseListener{
         frame.add(submarine);
 
         frame.addMouseListener(this);
+        frame.addKeyListener(this);
         frame.setVisible(true);
 
         
@@ -255,6 +256,16 @@ public class deepSeaGame implements ActionListener, MouseListener{
     }  
     public void mouseReleased(MouseEvent e) {  
         System.out.println("Mouse Released");  
+    }
+    public void keyPressed(KeyEvent e){
+        //System.out.println("You pressed key code "+e.getKeyCode());
+        //System.out.println("You pressed "+e.getKeyChar());
+    }
+    public void keyTyped(KeyEvent e){
+        
+    }
+    public void keyReleased(KeyEvent e){
+
     }
     public void draw(){
         
