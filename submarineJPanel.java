@@ -15,6 +15,10 @@ public class submarineJPanel extends JPanel{
 	private BufferedImage tier2;
 	private BufferedImage tier3;
 	private BufferedImage tier4;
+	private BufferedImage player1icon;
+	private BufferedImage player2icon;
+	private BufferedImage player3icon;
+	private BufferedImage player4icon;
 	private ArrayList<Treasure> ruins;
 	private Graphics graph;
 	private boolean result;
@@ -61,6 +65,10 @@ public class submarineJPanel extends JPanel{
 			}
 			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==4){
 				graph.drawImage(tier4,xVal,yVal,width,height,null);
+			}
+			if (ruins.get(i).isBlank()){
+				graph.drawRect(xVal,yVal,width,height);
+				graph.fillRect(xVal,yVal,width,height);
 			}
 			if (i == 6){
 				yVal += 180;

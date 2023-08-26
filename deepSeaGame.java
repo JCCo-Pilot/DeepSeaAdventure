@@ -251,7 +251,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
             int movement =move();
         }
         if (e.getSource()==returnToSub){
-
+            ruins.get(2).setBlank();
         }
         if (e.getSource()==pickUp){
 

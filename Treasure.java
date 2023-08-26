@@ -44,6 +44,9 @@ public class Treasure {
         xPos = i;
         yPos = a;
     }
+    public void setBlank(){
+        blank = true;
+    }
     public boolean isBlank(){
         return blank;
     }
