@@ -4,10 +4,12 @@ public class Player {
     private int count;
     private boolean turn;
     private boolean isWet;
+    private boolean hasntdived;
     public Player(){
         stack = new ArrayList<Treasure>();
         count = 0;
         isWet = false;
+        hasntdived = true;
     }
     public int getNumberOfTreasure(){
         return stack.size();
@@ -24,6 +26,9 @@ public class Player {
     }
     public boolean isWet(){
         return isWet;
+    }
+    public boolean hasntdived(){
+        return hasntdived;
     }
     public boolean isTurn(){
         return turn;

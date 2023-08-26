@@ -15,7 +15,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
 	JButton returnToSub;
     JButton pickUp;
     JButton drop;
-    JButton rollDice;
+    JButton move;
     JButton player1;
     JButton player2;
     JButton player3;
@@ -42,11 +42,13 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
     private int airCount;
     private int currentTurn;
     private int roundnum;
+    private int status;
     public deepSeaGame(){
         xPos = 0;
         yPos = 0;
         airCount = 25;
         currentTurn = 1;
+        status = 0;
 
         ruins = new ArrayList(32);
 
@@ -146,13 +148,13 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         instruct = new JTextField();
         instruct.setBounds(5,5,300,50);
         instruct.setFont(myFont);
-        instruct.setText("Dive Time");
+        instruct.setText("Would you like to dive or return to sub");
         //instruct.setEditable(false);
 
         dive = new JButton("Dive");
         returnToSub = new JButton("Return to Sub");
         pickUp = new JButton("Pick up tresure");
-        rollDice = new JButton("Roll Dice");
+        move = new JButton("Move over");
         drop = new JButton("Drop Treasure");
         player1 = new JButton("Player1");
         player2 = new JButton("Player2");
@@ -163,7 +165,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         buttons[0]= dive;
         buttons[1]= returnToSub;
         buttons[2]= pickUp;
-        buttons[3]= rollDice;
+        buttons[3]= move;
         buttons[4]= drop;
         buttons[5]= player1;
         buttons[6]= player2;
@@ -212,46 +214,21 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         
         if (e.getSource()==player1){
             currentTurn = 1;
-            curPlayer.setText("Player 1's Turn");
-            airCount--;
-            //airCount= airCount-1-user1.getNumberOfTreasure();
-            aircnt.setText("There is "+airCount+" air left");
-            if (airCount<=0){
-                aircnt.setText("Everyone died round over");
-            }
         }
         if (e.getSource()==player2){
             currentTurn = 2;
-            curPlayer.setText("Player 2's Turn");
-            airCount= airCount-1-user2.getNumberOfTreasure();
-            aircnt.setText("There is "+airCount+" air left");
-            if (airCount<=0){
-                aircnt.setText("Everyone died round over");
-            }
         }
         if (e.getSource()==player3){
             currentTurn = 3;
-            curPlayer.setText("Player 3's Turn");
-            airCount= airCount-1-user3.getNumberOfTreasure();
-            aircnt.setText("There is "+airCount+" air left");
-            if (airCount<=0){
-                aircnt.setText("Everyone died round over");
-            }
         }
         if (e.getSource()==player4){
             currentTurn = 4 ;
-            curPlayer.setText("Player 4's Turn");
-            airCount= airCount-1-user4.getNumberOfTreasure();
-            aircnt.setText("There is "+airCount+" air left");
-            if (airCount<=0){
-                aircnt.setText("Everyone died round over");
-            }
         }
         if (e.getSource()==dive){
-            int movement =move();
+            status =1;
         }
         if (e.getSource()==returnToSub){
-            ruins.get(2).setBlank();
+            status = 2;
         }
         if (e.getSource()==pickUp){
 
@@ -259,14 +236,15 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         if (e.getSource()==drop){
 
         }
-        if (e.getSource()==rollDice){
-
+        if (e.getSource()==move){
+            submarine.move(6);
         }
         /*if (e.getSource()==pickUp){
             if (currentTurn ==1){
                 user1.addTreasure();
             }
         }*/
+        turn();
         submarine.repaint();
         panelText.repaint();
         panel.repaint();
@@ -335,6 +313,55 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
             System.out.print(val+" ");
         }
     }
-    
+    public void turn(){
+        if (currentTurn ==1){
+            curPlayer.setText("Player 1's Turn");
+            aircnt.setText("There is "+airCount+" air left");
+            //logic needs to be fixed for edge case
+            if (!user1.isWet()&&user1.hasntdived()){
+                instruct.setText("It's time to dive");
+                if (status==1){
+                    instruct.setText("Good");
+                    int diving = move();
+                }
+            }
+            else{
+                if (status==1){
+                    instruct.setText("Bad");
+                }
+                if (status ==2){
+
+                }
+            }
+
+        }
+        if (currentTurn == 2){
+            curPlayer.setText("Player 2's Turn");
+            aircnt.setText("There is "+airCount+" air left");
+            if (status==1){
+
+            }
+            if (status ==2){
+
+            }
+        }
+        if (currentTurn == 3){
+            if (status==1){
+
+            }
+            if (status ==2){
+
+            }
+        }
+        if (currentTurn == 4){
+            if (status==1){
+
+            }
+            if (status ==2){
+
+            }
+        }
+        
+    }
       
 }
