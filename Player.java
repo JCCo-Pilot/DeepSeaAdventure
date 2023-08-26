@@ -2,6 +2,8 @@ import java.util.*;
 public class Player {
     private ArrayList<Treasure>stack;
     private int count;
+    private int x;
+    private int y;
     private boolean turn;
     private boolean isWet;
     private boolean hasntdived;

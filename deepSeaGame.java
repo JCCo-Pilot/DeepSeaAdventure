@@ -237,7 +237,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
 
         }
         if (e.getSource()==move){
-            submarine.move(6);
+
         }
         /*if (e.getSource()==pickUp){
             if (currentTurn ==1){
@@ -321,17 +321,27 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
             if (!user1.isWet()&&user1.hasntdived()){
                 instruct.setText("It's time to dive");
                 if (status==1){
-                    instruct.setText("Good");
                     int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user1,true);
                 }
+                if (status==2){
+                    instruct.setText("Press Dive");
+                }
+                status =0;
             }
             else{
                 if (status==1){
-                    instruct.setText("Bad");
+                    int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user1,true);
                 }
                 if (status ==2){
-
+                   int diving = move();
+                   instruct.setText("You are gonna be returning "+diving);
+                   submarine.move(diving,user1,false); 
                 }
+                status =0;
             }
 
         }

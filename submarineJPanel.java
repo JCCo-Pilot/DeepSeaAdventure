@@ -52,7 +52,7 @@ public class submarineJPanel extends JPanel{
 		
 		refresh();
 	}
-	public void move(int i){
+	public void move(int i, Player user1, boolean diving){
 		player1xVal +=10;
 		//player1yVal +=10;
 	}
