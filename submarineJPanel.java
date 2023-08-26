@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.Color;
 import java.awt.image.*;
 import java.util.*;
 import javax.imageio.ImageIO;
@@ -6,7 +7,6 @@ import javax.imageio.ImageIO.*;
 import javax.swing.*;
 import java.io.*;
 import java.io.File;
-
 import javax.imageio.ImageIO;
 
 public class submarineJPanel extends JPanel{
@@ -45,6 +45,7 @@ public class submarineJPanel extends JPanel{
 		super.paint(g);
 		graph = g;
 		graph.drawImage(image,0,10,600,150,null);
+		graph.drawRect(10,10,30,30);
 		refresh();
 	}
 	public void refresh(){
@@ -66,6 +67,7 @@ public class submarineJPanel extends JPanel{
 			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==4){
 				graph.drawImage(tier4,xVal,yVal,width,height,null);
 			}
+			graph.setColor(Color.GREEN);
 			if (ruins.get(i).isBlank()){
 				graph.drawRect(xVal,yVal,width,height);
 				graph.fillRect(xVal,yVal,width,height);
