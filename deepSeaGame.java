@@ -329,6 +329,8 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
                     instruct.setText("Press Dive");
                 }
                 status =0;
+                user1.setDive(true);
+                user1.setWet(true);
             }
             else{
                 if (status==1){
@@ -348,27 +350,94 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         if (currentTurn == 2){
             curPlayer.setText("Player 2's Turn");
             aircnt.setText("There is "+airCount+" air left");
-            if (status==1){
-
+            if (!user2.isWet()&&user2.hasntdived()){
+                instruct.setText("It's time to dive");
+                if (status==1){
+                    int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user2,true);
+                }
+                if (status==2){
+                    instruct.setText("Press Dive");
+                }
+                status =0;
+                user2.setDive(true);
+                user2.setWet(true);
             }
-            if (status ==2){
-
+            else{
+                if (status==1){
+                    int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user2,true);
+                }
+                if (status ==2){
+                   int diving = move();
+                   instruct.setText("You are gonna be returning "+diving);
+                   submarine.move(diving,user2,false); 
+                }
+                status =0;
             }
         }
         if (currentTurn == 3){
-            if (status==1){
-
+            curPlayer.setText("Player 3's Turn");
+            aircnt.setText("There is "+airCount+" air left");
+            if (!user3.isWet()&&user3.hasntdived()){
+                instruct.setText("It's time to dive");
+                if (status==1){
+                    int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user3,true);
+                }
+                if (status==2){
+                    instruct.setText("Press Dive");
+                }
+                status =0;
+                user3.setDive(true);
+                user3.setWet(true);
             }
-            if (status ==2){
-
+            else{
+                if (status==1){
+                    int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user3,true);
+                }
+                if (status ==2){
+                   int diving = move();
+                   instruct.setText("You are gonna be returning "+diving);
+                   submarine.move(diving,user3,false); 
+                }
+                status =0;
             }
         }
         if (currentTurn == 4){
-            if (status==1){
-
+            curPlayer.setText("Player 4's Turn");
+            aircnt.setText("There is "+airCount+" air left");
+            if (!user4.isWet()&&user4.hasntdived()){
+                instruct.setText("It's time to dive");
+                if (status==1){
+                    int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user4,true);
+                }
+                if (status==2){
+                    instruct.setText("Press Dive");
+                }
+                status =0;
+                user4.setDive(true);
+                user4.setWet(true);
             }
-            if (status ==2){
-
+            else{
+                if (status==1){
+                    int diving = move();
+                    instruct.setText("You are gonna be diving "+diving);
+                    submarine.move(diving,user4,true);
+                }
+                if (status ==2){
+                   int diving = move();
+                   instruct.setText("You are gonna be returning "+diving);
+                   submarine.move(diving,user4,false); 
+                }
+                status =0;
             }
         }
         

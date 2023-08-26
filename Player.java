@@ -32,6 +32,12 @@ public class Player {
     public boolean hasntdived(){
         return hasntdived;
     }
+    public void setWet(boolean b){
+        isWet =b;
+    }
+    public void setDive(boolean b){
+        hasntdived = b;
+    }
     public boolean isTurn(){
         return turn;
     }
