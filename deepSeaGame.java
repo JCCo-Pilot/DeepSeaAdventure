@@ -248,7 +248,7 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
             }
         }
         if (e.getSource()==dive){
-
+            int movement =move();
         }
         if (e.getSource()==returnToSub){
 
@@ -282,16 +282,16 @@ public class deepSeaGame implements ActionListener, MouseListener, KeyListener{
         System.out.println("Mouse Clicked");  
     }  
     public void mouseEntered(MouseEvent e) {  
-        System.out.println("Mouse Entered");  
+        //System.out.println("Mouse Entered");  
     }  
     public void mouseExited(MouseEvent e) {  
-        System.out.println("Mouse Exited");  
+        //System.out.println("Mouse Exited");  
     }  
     public void mousePressed(MouseEvent e) {  
-        System.out.println("Mouse Pressed");  
+        //System.out.println("Mouse Pressed");  
     }  
     public void mouseReleased(MouseEvent e) {  
-        System.out.println("Mouse Released");  
+        //System.out.println("Mouse Released");  
     }
     public void keyPressed(KeyEvent e){
         //System.out.println("You pressed key code "+e.getKeyCode());

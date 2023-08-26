@@ -10,6 +10,7 @@ public class Treasure {
     private int xPos;
     private int yPos;
     private boolean blank;
+    private boolean occupied;
     public Treasure(){
         xPos = 0;
         yPos = 0;
@@ -23,6 +24,12 @@ public class Treasure {
     public Treasure(int i, int a){
         tier = i; 
         value = a;
+    }
+    public void setOccupied(boolean b){
+        occupied = b;
+    }
+    public boolean occupied(){
+        return occupied;
     }
     public void setValue(int i){
         value = i;

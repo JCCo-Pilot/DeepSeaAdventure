@@ -11,6 +11,10 @@ import javax.imageio.ImageIO;
 
 public class submarineJPanel extends JPanel{
     private BufferedImage image;
+	private BufferedImage tier1;
+	private BufferedImage tier2;
+	private BufferedImage tier3;
+	private BufferedImage tier4;
 	private ArrayList<Treasure> ruins;
 	private Graphics graph;
 	private boolean result;
@@ -19,6 +23,10 @@ public class submarineJPanel extends JPanel{
 		result = true;
 		try {
 			image = ImageIO.read(new File("submarine.png"));
+			tier1 = ImageIO.read(new File("tier1treasure.png"));
+			tier2 = ImageIO.read(new File("tier2treasure.png"));
+			tier3 = ImageIO.read(new File("tier3treasure.png"));
+			tier4 = ImageIO.read(new File("tier4treasure.png"));
 		}
 		catch(Exception E) {
 			System.out.println("Error");
@@ -43,16 +51,16 @@ public class submarineJPanel extends JPanel{
 		// first row
 		for (int i = 0; i<ruins.size();i++){
 			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==1){
-				graph.drawRect(xVal,yVal,width,height);
+				graph.drawImage(tier1,xVal,yVal,width,height,null);
 			}
 			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==2){
-				graph.drawOval(xVal,yVal,width,height);
+				graph.drawImage(tier2,xVal,yVal,width,height,null);
 			}
 			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==3){
-				graph.drawRect(xVal,yVal,width,height);
+				graph.drawImage(tier3,xVal,yVal,width,height,null);
 			}
 			if (!ruins.get(i).isBlank()&&ruins.get(i).getTier()==4){
-				graph.drawOval(xVal,yVal,width,height);
+				graph.drawImage(tier4,xVal,yVal,width,height,null);
 			}
 			if (i == 6){
 				yVal += 180;
